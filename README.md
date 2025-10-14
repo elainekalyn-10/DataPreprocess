@@ -66,4 +66,4 @@ Simply modify the filtering criteria, spatial/temporal windows, and output param
 ## 📝 Citation
 * If you use this code or pipeline in your research, please cite appropriately or reference this repository.
 
-If you use this preprocessing pipeline in your research, please cite this repository:
+
