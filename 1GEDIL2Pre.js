@@ -40,6 +40,8 @@ Export.table.toDrive({
   fileFormat: 'CSV'
 });
 
-# Copyright (c) 2025 elainekalyn-10
-# This work is licensed under the terms of the MIT license.  
-# For a copy, see https://opensource.org/licenses/MIT
+/* 
+Copyright (c) 2025 elainekalyn-10
+This work is licensed under the terms of the MIT license.  
+For a copy, see https://opensource.org/licenses/MIT
+ */
