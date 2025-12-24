@@ -27,6 +27,28 @@ This step handles UAV-derived imagery and products, including:
 * Canopy Height Model (CHM) generation from DSM-DTM differencing
 ---
 
+## 🔹 3. Bias Calibration Model (`3Bias_Calibration_Model.js`)
+
+A complete pipeline for GEDI canopy height modeling using Random Forest, including data splitting, model training, and prediction with validation.
+
+
+### 1. Data Splitting
+* Random sampling (70/15/15 split)
+* Stratified sampling (70/15/15 split)
+* Automatic dataset saving
+
+### 2. Model Training
+* Random Forest with parameter optimization
+* Automatic feature selection
+* Model evaluation and metadata storage
+
+### 3. Prediction & Validation
+* Terrain feature extraction from raster files
+* Batch prediction
+* Coordinate-based validation matching
+* Performance evaluation
+
+---
 ## 🔁 Extension
 
 This preprocessing framework can be easily adapted and extended for:
