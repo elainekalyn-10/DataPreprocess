@@ -19,7 +19,7 @@ This script processes GEDI L2A canopy height data from GEE's GEDI catalog. Key o
 
 ---
 
-## 🔹 2. UAV Data Preprocessing (`2UAV_Preprocess.js`)
+## 🔹 2. UAV Data Preprocessing (`2UAV_Preprocess.py`)
 
 This step handles UAV-derived imagery and products, including:
 
@@ -27,7 +27,7 @@ This step handles UAV-derived imagery and products, including:
 * Canopy Height Model (CHM) generation from DSM-DTM differencing
 ---
 
-## 🔹 3. Bias Calibration Model (`3Bias_Calibration_Model.js`)
+## 🔹 3. Bias Calibration Model (`3Bias_Calibration_Model.py`)
 
 A complete pipeline for calibrating GEDI data using Random Forest, including data splitting, model training, and prediction with validation.
 
@@ -103,8 +103,8 @@ Simply modify the filtering criteria, spatial/temporal windows, and output param
 ```
 ├── 1GEDI_Preprocess.js             # GEDI L2A data filtering and processing
 ├── 2UAV_Preprocess.js              # UAV imagery and CHM preprocessing
-├── 3Bias_Calibration_Model.js      # GEDI L2A data filtering and processing
-├── 4Canopy_Height_Model.js         # UAV imagery and CHM preprocessing
+├── 3Bias_Calibration_Model.py      # GEDI L2A data filtering and processing
+├── 4Canopy_Height_Model.py         # UAV imagery and CHM preprocessing
 └── README.md                       # Project documentation
 ```
 
