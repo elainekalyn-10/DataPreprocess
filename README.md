@@ -1,7 +1,7 @@
-# DataPreprocess
-**GEDI L2A and UAV Data Preprocessing Pipeline**
+# A 10m High-precision Canopy Height Product for Nanping City, Fujian Province, China
+**The Pipeline of Generating Canopy Height Product**
 
-This repository provides a modular pipeline for preprocessing GEDI L2A (Global Ecosystem Dynamics Investigation) LiDAR data and UAV (Unmanned Aerial Vehicle) imagery using Google Earth Engine (GEE) and RStudio. The workflow is designed to prepare high-quality remote sensing data for ecological analysis, biomass estimation, and vegetation structure modeling.
+This warehouse offers a modular processing flow for preprocessing GEDI L2A (Global Ecosystem Dynamics Survey) liDAR data and unmanned aerial vehicle (UAV) images, performing bias calibration on GEDI L2A, and generating high-precision canopy height products with a resolution of 10 meters. This workflow integrates Google Earth Engine (GEE), RStudio and Pycharm tools, aiming to prepare high-quality remote sensing data for ecological analysis, biomass estimation and vegetation structure modeling.
 
 ---
 
@@ -29,7 +29,7 @@ This step handles UAV-derived imagery and products, including:
 
 ## 🔹 3. Bias Calibration Model (`3Bias_Calibration_Model.js`)
 
-A complete pipeline for GEDI canopy height modeling using Random Forest, including data splitting, model training, and prediction with validation.
+A complete pipeline for calibrating GEDI data using Random Forest, including data splitting, model training, and prediction with validation.
 
 
 ### 1. Data Splitting
@@ -47,6 +47,36 @@ A complete pipeline for GEDI canopy height modeling using Random Forest, includi
 * Batch prediction
 * Coordinate-based validation matching
 * Performance evaluation
+
+---
+## 🔹 4. Canopy Height Model (`4Canopy_Height_Model.js`)
+
+A complete pipeline for generating canopy height product.
+
+
+### 1.  Data Preprocessing
+- Removes missing values and infinite values
+- Filters CHM values to specified range (0-50m default)
+- Stratified sampling for balanced train/test split
+- Removes zero-variance features
+
+### 2. Feature Selection
+- Correlation-based selection
+- Selects top N features (default: 25)
+- Ranks features by importance
+
+### 3. Model Training
+- Random Forest Regressor
+- Hyperparameter optimization:
+  - Random Search (faster, 20 iterations)
+  - Grid Search (thorough, exhaustive)
+- Cross-validation (5 folds)
+- Comprehensive evaluation (R², RMSE, MAE)
+### 4. Raster Prediction
+- Block-wise processing (memory efficient)
+- Automatic feature file discovery
+- Handles NoData values
+- Progress bar tracking
 
 ---
 ## 🔁 Extension
@@ -71,9 +101,11 @@ Simply modify the filtering criteria, spatial/temporal windows, and output param
 
 ## 📁 Folder Structure
 ```
-├── 1GEDI_Preprocess.js      # GEDI L2A data filtering and processing
-├── 2UAV_Preprocess.js       # UAV imagery and CHM preprocessing
-└── README.md                # Project documentation
+├── 1GEDI_Preprocess.js             # GEDI L2A data filtering and processing
+├── 2UAV_Preprocess.js              # UAV imagery and CHM preprocessing
+├── 3Bias_Calibration_Model.js      # GEDI L2A data filtering and processing
+├── 4Canopy_Height_Model.js         # UAV imagery and CHM preprocessing
+└── README.md                       # Project documentation
 ```
 
 ---
@@ -82,6 +114,7 @@ Simply modify the filtering criteria, spatial/temporal windows, and output param
 
 * **Google Earth Engine** account with access to Asset storage and Google Drive
 * **R**  environment with raster/spatial packages (for CHM)
+* **Python** Python environment (version 3.8 or above is recommended) and related scientific computing packages (such as numpy, pandas, scikit-learn, etc.)
 
 ---
 
